@@ -1,0 +1,7 @@
+version: '3.2'
+services:
+  clickbus-place:
+    image: app_clickbus-place:latest
+    restart: always
+    ports:
+      - "8051:8051"

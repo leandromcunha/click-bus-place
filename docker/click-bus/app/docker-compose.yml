@@ -1,0 +1,8 @@
+version: '3'
+services:
+  clickbus-place:
+    build:
+      context: /tmp/click-bus/app
+      dockerfile: Dockerfile
+      args:
+        JAR_FILE: click-bus-place-0.0.1-SNAPSHOT.war
