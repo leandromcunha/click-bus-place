@@ -40,14 +40,26 @@ public class PlaceServiceImpl implements PlaceService {
         try{
             final LocalDateTime now = LocalDateTime.now();
             final Place place = this.placeMapper.toEntity( placeDTO );
-            if( placeDTO.getId() == null ){
-                place.setCreated( now );
+            place.setCreated( now );
+            if( placeDTO.getId() != null ){
+                this.update( place, now );
             }
             place.setUpdated( now );
             this.placeRepository.save( place );
             return place.getId();
         }catch( final Exception e ){
             throw new ApiExeception( ExceptionCodeEnum.INTERNAL_SERVER_ERROR, e );
+        }
+    }
+    
+    /**
+     * @param place
+     * @param now
+     */
+    private void update( final Place place, final LocalDateTime now ) {
+        if( this.placeRepository.existsById( place.getId() ) ){
+            final PlaceDTO placeUpdate = this.findById( place.getId() );
+            place.setCreated( placeUpdate.getCreated() );
         }
     }
     
