@@ -10,3 +10,6 @@ Apartir do path raiz do projeto
 - Execute o seguinte comando docker-compose up -d e espere alguns instantes para dar tempo da API iniciar
 
 Para verificar as API disponível acesse via navegador o swagger através da URI: http://<hostname>:8051/swagger-ui.html
+
+API no ambiente cloud:
+	https://clickbusapp.azurewebsites.net/swagger-ui.html#/
