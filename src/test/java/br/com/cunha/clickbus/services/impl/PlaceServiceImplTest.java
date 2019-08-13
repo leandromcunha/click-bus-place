@@ -65,8 +65,8 @@ public class PlaceServiceImplTest {
     public void placeTest5() {
         final PlaceDTO place = this.placeService.findByName( "PLACE 1" );
         place.setName( "UPDATE PLACE 1" );
-        this.placeService.save( place );
-        Assert.assertNotNull( place );
+        final Long placeId = this.placeService.save( place );
+        Assert.assertEquals( placeId, place.getId() );
     }
     
     /**

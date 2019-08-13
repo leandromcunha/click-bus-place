@@ -48,7 +48,7 @@ public class Place implements Serializable {
     @Column( name = "SG_UF", length = 2, nullable = false )
     private String state;
     
-    @Column( name = "DH_CREATED" )
+    @Column( name = "DH_CREATED", updatable = false )
     private LocalDateTime created;
     
     @Column( name = "DH_UPDATED" )
