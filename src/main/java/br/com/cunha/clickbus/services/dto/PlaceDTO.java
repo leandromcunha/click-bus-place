@@ -3,6 +3,7 @@ package br.com.cunha.clickbus.services.dto;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -11,6 +12,7 @@ import io.swagger.annotations.ApiModelProperty;
  *
  * @author Leandro
  */
+@Api
 @ApiModel( value = "PlaceDTO", description = "Information of a place" )
 public class PlaceDTO implements Serializable {
     
@@ -31,10 +33,10 @@ public class PlaceDTO implements Serializable {
     @ApiModelProperty( name = "state", notes = "State of place" )
     private String state;
     
-    @ApiModelProperty( name = "created", notes = "Date create of place" )
+    @ApiModelProperty( name = "created", notes = "Date create of place", readOnly = true )
     private LocalDateTime created;
     
-    @ApiModelProperty( name = "updated", notes = "Date of last update of place" )
+    @ApiModelProperty( name = "updated", notes = "Date of last update of place", readOnly = true )
     private LocalDateTime updated;
     
     public Long getId() {
