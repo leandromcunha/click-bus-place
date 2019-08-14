@@ -27,9 +27,12 @@ import br.com.cunha.clickbus.services.dto.PlaceDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;the API-CRUD a place.**
+import io.swagger.annotations.ApiResponses;
 
-@author <a href="mailto:leandromcunha@gmail.com>Leandro Marques da Cunha</a>
+/**
+ * Class PlaceResource Responsible for exposing the API - CRUD a place.
+ *
+ * @author <a href="mailto:leandromcunha@gmail.com>Leandro Marques da Cunha</a>
  * @version $Id$ Leandro
  */
 
@@ -37,10 +40,10 @@ import io.swagger.annotations.ApiResponses;the API-CRUD a place.**
 @RequestMapping( "/api" )
 @Api( value = "CRUD - Manage a place" )
 public class PlaceResource {
-
+    
     @Autowired
     private PlaceService placeService;
-
+    
     @PostMapping( "/place" )
     @ApiOperation( value = "Save a place", response = Long.class )
     @ApiResponses( value = {@ApiResponse( code = 200, message = "200 OK. Success.", response = Long.class ),
@@ -53,13 +56,14 @@ public class PlaceResource {
             @ApiResponse( code = 422, message = "422 UNPROCESSABLE ENTITY. Validation error." ),
             @ApiResponse( code = 500, message = "500 INTERNAL SERVER ERROR. An error occurred in our API.", response = ErroMessageExceptionDTO.class )} )
     @Timed
+    
     public ResponseEntity<Long> save( @RequestBody
     final PlaceDTO place ) {
         place.setId( null );
         final Long idPlace = this.placeService.save( place );
         return new ResponseEntity<>( idPlace, HttpStatus.OK );
     }
-
+    
     @PutMapping( "/place" )
     @ApiOperation( value = "Update a place", response = Long.class )
     @ApiResponses( value = {@ApiResponse( code = 200, message = "200 OK. Success." ),
@@ -72,13 +76,13 @@ public class PlaceResource {
             @ApiResponse( code = 422, message = "422 UNPROCESSABLE ENTITY. Validation error." ),
             @ApiResponse( code = 500, message = "500 INTERNAL SERVER ERROR. An error occurred in our API.", response = ErroMessageExceptionDTO.class )} )
     @Timed
-
+    
     public ResponseEntity<Long> update( @RequestBody
     final PlaceDTO place ) {
         final Long idPlace = this.placeService.save( place );
         return new ResponseEntity<>( idPlace, HttpStatus.OK );
     }
-
+    
     @GetMapping( "/place/{id}" )
     @ApiOperation( value = "Find a place by ID", response = PlaceDTO.class )
     @ApiResponses( value = {@ApiResponse( code = 200, message = "200 OK. Success." ),
@@ -96,7 +100,7 @@ public class PlaceResource {
         final PlaceDTO place = this.placeService.findById( id );
         return new ResponseEntity<>( place, place == null ? HttpStatus.NO_CONTENT : HttpStatus.OK );
     }
-
+    
     @GetMapping( "/place/{name}/find-by-name" )
     @ApiOperation( value = "Find a place by name", response = PlaceDTO.class )
     @ApiResponses( value = {@ApiResponse( code = 200, message = "200 OK. Success." ),
@@ -114,7 +118,7 @@ public class PlaceResource {
         final PlaceDTO place = this.placeService.findByName( name );
         return new ResponseEntity<>( place, place == null ? HttpStatus.NO_CONTENT : HttpStatus.OK );
     }
-
+    
     @GetMapping( "/place/{name}/find-by-like-name" )
     @ApiOperation( value = "Find a place list by like name" )
     @ApiResponses( value = {@ApiResponse( code = 200, message = "200 OK. Success." ),
