@@ -1,0 +1,7 @@
+docker login 
+	Username: leandromcunha 
+	Password: lmc388326
+
+docker tag 763d8a17393c leandromcunha/click-bus
+
+docker push leandromcunha/click-bus

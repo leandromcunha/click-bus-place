@@ -18,7 +18,7 @@ public class PlaceDTO implements Serializable {
     
     private static final long serialVersionUID = -5947011039467798193L;
     
-    @ApiModelProperty( name = "id", notes = "Key of identification of a place" )
+    @ApiModelProperty( name = "id", notes = "Identification Key of a place" )
     private Long id;
     
     @ApiModelProperty( name = "name", notes = "The name of a place" )
@@ -33,10 +33,10 @@ public class PlaceDTO implements Serializable {
     @ApiModelProperty( name = "state", notes = "State of place" )
     private String state;
     
-    @ApiModelProperty( name = "created", notes = "Date create of place", readOnly = true )
+    @ApiModelProperty( name = "created", notes = "Create date of place", readOnly = true )
     private LocalDateTime created;
     
-    @ApiModelProperty( name = "updated", notes = "Date of last update of place", readOnly = true )
+    @ApiModelProperty( name = "updated", notes = "Last date update of place", readOnly = true )
     private LocalDateTime updated;
     
     public Long getId() {

@@ -22,8 +22,8 @@ import br.com.cunha.clickbus.config.APIProperties;
 import br.com.cunha.clickbus.config.Constants;
 import br.com.cunha.clickbus.config.DefaultProfileUtil;
 
-@SpringBootApplication( scanBasePackages = {"br.com.cunha"} )
 @Configuration
+@SpringBootApplication( scanBasePackages = {"br.com.cunha"} )
 @SpringBootConfiguration
 @EnableJpaRepositories
 @EnableConfigurationProperties( value = {APIProperties.class} )
@@ -32,7 +32,7 @@ public class APIApplication {
     /**
      * Atribute LOG
      */
-    private static final Logger log = LoggerFactory.getLogger( APIApplication.class );
+    private static final Logger LOG = LoggerFactory.getLogger( APIApplication.class );
     
     /**
      * Vari\u00e1vel para defini\u00e7\u00e3o do profile
@@ -44,10 +44,10 @@ public class APIApplication {
     public void initApplication() {
         final Collection<String> activeProfiles = Arrays.asList( this.env.getActiveProfiles() );
         if( activeProfiles.contains( Constants.PROFILE_DEV ) && activeProfiles.contains( Constants.PROFILE_PROD ) ){
-            APIApplication.log.error( "Escolha somente um perfil para executar sua aplica\u00e7\u00e3o, DEV ou PROD" );
+            APIApplication.LOG.error( "Escolha somente um perfil para executar sua aplica\u00e7\u00e3o, DEV ou PROD" );
         }
         if( activeProfiles.contains( Constants.PROFILE_DEV ) && activeProfiles.contains( Constants.PROFILE_CLOUD ) ){
-            APIApplication.log
+            APIApplication.LOG
                     .error( "Escolha somente um perfil para executar sua aplica\\u00e7\\u00e3o, DEV ou CLOUD" );
         }
     }
@@ -66,7 +66,7 @@ public class APIApplication {
         if( env.getProperty( "server.ssl.key-store" ) != null ){
             protocol = "https";
         }
-        APIApplication.log.info(
+        APIApplication.LOG.info(
                 "\n----------------------------------------------------------\n\t" +
                         "Application '{}' is running! Access URLs:\n\t" +
                         "Local: \t\t{}://localhost:{}\n\t" +
@@ -79,7 +79,7 @@ public class APIApplication {
                 env.getActiveProfiles() );
         
         final String configServerStatus = env.getProperty( "configserver.status" );
-        APIApplication.log.info(
+        APIApplication.LOG.info(
                 "\n----------------------------------------------------------\n\t" +
                         "Config Server: \t{}\n----------------------------------------------------------",
                 configServerStatus == null ? "Not found or not setup for this application" : configServerStatus );

@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   clickbus-place:
-    image: app_clickbus-place:latest
+    image: leandromcunha/click-bus:latest
     restart: always
     ports:
-      - "8051:8051"
+      - "80:8051"

@@ -56,9 +56,7 @@ public class PlaceResource {
             @ApiResponse( code = 422, message = "422 UNPROCESSABLE ENTITY. Validation error." ),
             @ApiResponse( code = 500, message = "500 INTERNAL SERVER ERROR. An error occurred in our API.", response = ErroMessageExceptionDTO.class )} )
     @Timed
-    
-    public ResponseEntity<Long> save( @RequestBody
-    final PlaceDTO place ) {
+    public ResponseEntity<Long> save( @RequestBody final PlaceDTO place ) {
         place.setId( null );
         final Long idPlace = this.placeService.save( place );
         return new ResponseEntity<>( idPlace, HttpStatus.OK );
@@ -77,8 +75,7 @@ public class PlaceResource {
             @ApiResponse( code = 500, message = "500 INTERNAL SERVER ERROR. An error occurred in our API.", response = ErroMessageExceptionDTO.class )} )
     @Timed
     
-    public ResponseEntity<Long> update( @RequestBody
-    final PlaceDTO place ) {
+    public ResponseEntity<Long> update( @RequestBody final PlaceDTO place ) {
         final Long idPlace = this.placeService.save( place );
         return new ResponseEntity<>( idPlace, HttpStatus.OK );
     }
@@ -95,8 +92,7 @@ public class PlaceResource {
             @ApiResponse( code = 422, message = "422 UNPROCESSABLE ENTITY. Validation error." ),
             @ApiResponse( code = 500, message = "500 INTERNAL SERVER ERROR. An error occurred in our API.", response = ErroMessageExceptionDTO.class )} )
     @Timed
-    public ResponseEntity<PlaceDTO> findById( @PathVariable
-    final Long id ) {
+    public ResponseEntity<PlaceDTO> findById( @PathVariable final Long id ) {
         final PlaceDTO place = this.placeService.findById( id );
         return new ResponseEntity<>( place, place == null ? HttpStatus.NO_CONTENT : HttpStatus.OK );
     }
@@ -113,8 +109,7 @@ public class PlaceResource {
             @ApiResponse( code = 422, message = "422 UNPROCESSABLE ENTITY. Validation error." ),
             @ApiResponse( code = 500, message = "500 INTERNAL SERVER ERROR. An error occurred in our API.", response = ErroMessageExceptionDTO.class )} )
     @Timed
-    public ResponseEntity<PlaceDTO> findByName( @PathVariable
-    final String name ) {
+    public ResponseEntity<PlaceDTO> findByName( @PathVariable final String name ) {
         final PlaceDTO place = this.placeService.findByName( name );
         return new ResponseEntity<>( place, place == null ? HttpStatus.NO_CONTENT : HttpStatus.OK );
     }
@@ -131,8 +126,7 @@ public class PlaceResource {
             @ApiResponse( code = 422, message = "422 UNPROCESSABLE ENTITY. Validation error." ),
             @ApiResponse( code = 500, message = "500 INTERNAL SERVER ERROR. An error occurred in our API.", response = ErroMessageExceptionDTO.class )} )
     @Timed
-    public ResponseEntity<List<PlaceDTO>> findByLikeName( @PathVariable
-    final String name ) {
+    public ResponseEntity<List<PlaceDTO>> findByLikeName( @PathVariable final String name ) {
         final List<PlaceDTO> placeList = this.placeService.findByLikeName( name );
         return new ResponseEntity<>( placeList,
                 CollectionUtils.isEmpty( placeList ) ? HttpStatus.NO_CONTENT : HttpStatus.OK );

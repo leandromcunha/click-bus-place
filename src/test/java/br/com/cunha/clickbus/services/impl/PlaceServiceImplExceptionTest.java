@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.ActiveProfiles;
 
 import br.com.cunha.clickbus.handler.exception.ApiExeception;
 import br.com.cunha.clickbus.repository.PlaceRepository;
@@ -14,6 +15,7 @@ import br.com.cunha.clickbus.services.dto.PlaceDTO;
 import br.com.cunha.clickbus.services.entities.Place;
 import br.com.cunha.clickbus.services.mapper.PlaceMapper;
 
+@ActiveProfiles( "test" )
 public class PlaceServiceImplExceptionTest {
     
     @InjectMocks
